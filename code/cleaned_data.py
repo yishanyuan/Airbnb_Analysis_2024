@@ -1,21 +1,7 @@
 import re
 import json
 
-json_file_path = "../data/file.json"
-
-def load_json_from_file(file_path):
-    """
-    解析给定的 JSON 文件并将其加载为字典对象。
-    
-    参数:
-    file_path (str): JSON 文件的路径。
-    
-    返回:
-    dict: 解析后的 JSON 数据。
-    """
-    with open(file_path, 'r', encoding='UTF-8') as file:
-        data = json.load(file)  # 使用 json.load() 读取文件并解析为字典
-    return data
+##从URL中提取check-in和check-out
 
 def add_checkin_checkout_dates(data):
     """
@@ -80,8 +66,54 @@ def assign_city_to_listings(data):
 
     return updated_data
 
+def clean_invalid_records(data):
+    """
+    清除包含无效数据的记录：
+    - URL 不以 https 开头
+    - features 为空
+    - prices 为空
+    - house_rules 为空
+
+    参数:
+    data (dict): 原始 JSON 数据。
+
+    返回:
+    dict: 清除无效记录后的数据。
+    """
+    cleaned_data = {}
+
+    for url, details in data.items():
+        # 检查 URL 是否以 https 开头
+        if not url.startswith("https"):
+            continue
+
+        # 检查 features, prices 和 house_rules 是否为空
+        if len(details.get("features")) == 0 or len(details.get("prices")) == 0 or len(details.get("house_rules")) == 0:
+            continue
+
+        # 如果记录有效，则添加到 cleaned_data 中
+        cleaned_data[url] = details
+
+    return cleaned_data
+
+json_file_path = "../data/file.json"
+
+def load_json_from_file(file_path):
+    """
+    解析给定的 JSON 文件并将其加载为字典对象。
+    
+    参数:
+    file_path (str): JSON 文件的路径。
+    
+    返回:
+    dict: 解析后的 JSON 数据。
+    """
+    with open(file_path, 'r', encoding='utf-8') as file:
+        data = json.load(file)  # 使用 json.load() 读取文件并解析为字典
+    return data
+
 # 保存清洗完的 json
-def save_to_json(data, filename = "cleaned_data.json"):
+def save_to_json(data, filename = "../data/cleaned_data.json"):
     try:
         # 将字典数据保存到 JSON 文件
         with open(filename, 'w', encoding='utf-8') as json_file:
@@ -90,7 +122,11 @@ def save_to_json(data, filename = "cleaned_data.json"):
     except Exception as e:
         print(f"保存到 JSON 文件时出错: {e}")
 
+###数据清洗
+
 raw_data = load_json_from_file(json_file_path)
 added_check_data = add_checkin_checkout_dates(raw_data)
 added_city_data = assign_city_to_listings(added_check_data)
-save_to_json(added_city_data)
+cleaned_data = clean_invalid_records(added_city_data)
+
+save_to_json(cleaned_data)
