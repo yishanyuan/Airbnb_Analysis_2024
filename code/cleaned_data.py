@@ -47,6 +47,39 @@ def add_checkin_checkout_dates(data):
     
     return updated_data
 
+# 房源归属地提取
+def assign_city_to_listings(data):
+    """
+    根据 JSON 对象的 checkout 日期将房源归属于不同的城市。
+
+    参数:
+    data (dict): 包含房源信息的 JSON 数据，其中每个房源的键是 URL 字符串。
+    cities (list): 城市名称列表，按照爬取顺序提供。
+
+    返回:
+    dict: 更新后的 JSON 数据，带有每个房源的归属城市信息。
+    """
+    cities = ["Austin, TX", "New York City, NY", "Chicago, IL", "Los Angeles, CA"]
+
+    city_index = 0  # 用于跟踪当前的城市
+    updated_data = {}  # 用于存储更新后的数据
+    city_30_batch = False
+
+    # 遍历所有 URL 和详细信息
+    for key, value in data.items():
+        # 如果当前房源的 checkout 日期是 "2024-11-30" 并且已经进入下一批数据
+        if value.get("check_out") == "2024-11-30":
+            city_30_batch = True
+        if city_30_batch and (value.get("check_out") == "2024-11-02"):
+            city_30_batch = False
+            city_index = city_index + 1
+
+        # 将当前房源归属城市添加到房源的详细信息中
+        value["city"] = cities[city_index]
+        updated_data[key] = value
+
+    return updated_data
+
 # 保存清洗完的 json
 def save_to_json(data, filename = "cleaned_data.json"):
     try:
@@ -59,4 +92,5 @@ def save_to_json(data, filename = "cleaned_data.json"):
 
 raw_data = load_json_from_file(json_file_path)
 added_check_data = add_checkin_checkout_dates(raw_data)
-save_to_json(added_check_data)
+added_city_data = assign_city_to_listings(added_check_data)
+save_to_json(added_city_data)
