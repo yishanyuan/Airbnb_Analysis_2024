@@ -2,8 +2,8 @@ import pandas as pd
 from openpyxl import load_workbook
 
 # 定义数据文件相对路径（相对于 code 文件夹）
-input_file_path = '../data/variables_output_data.csv'
-output_file_path = '../data/updated_output_data.xlsx'
+input_file_path = "./data/variables_output.csv"
+output_file_path = './data/updated_output_data.xlsx'
 
 # 读取CSV文件，使用相对路径
 data = pd.read_csv(input_file_path)
