@@ -2,9 +2,13 @@ import json
 import csv
 import os
 
-# Define relative paths for input JSON and output CSV
-json_file_path = os.path.join(os.path.dirname(__file__), 'cleaned_data.json')  # JSON file in the same directory
-csv_file_path = os.path.join(os.path.dirname(__file__), 'output_data.csv')     # Output CSV in the same directory
+# Define the base directory for your project (up one level from the script's location)
+base_dir = os.path.dirname(os.path.dirname(__file__))  # Move one level up from the current directory
+
+# Define paths for the input JSON and output CSV located in 'data' folder
+data_folder_path = os.path.join(base_dir, 'data')
+json_file_path = os.path.join(data_folder_path, 'cleaned_data.json')  # JSON file in 'data' folder
+csv_file_path = os.path.join(data_folder_path, 'output_data.csv')     # Output CSV in 'data' folder
 
 # Load the JSON data
 with open(json_file_path, 'r') as json_file:
