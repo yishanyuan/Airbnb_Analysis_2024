@@ -15,7 +15,10 @@ from extract import extract_house_rules
 from extract import save_to_json
 
 def open():
-    # Set headless browser options
+    """
+    Set headless browser options
+    """
+    
     optionsSettings = Options()
     optionsSettings.add_argument("--headless=new")
     optionsSettings.add_argument("--disable-gpu")
@@ -29,15 +32,16 @@ def open():
     
 
 def close(driver):
-    # Close Selenium WebDriver
+    """
+    Close Selenium WebDriver
+    """
+    
     driver.quit()
 
 save_directory = os.getcwd()
 if not os.path.exists(save_directory):
     os.makedirs(save_directory)
 print(f"Save directory set to: {save_directory}")
-
-
 
 
 
