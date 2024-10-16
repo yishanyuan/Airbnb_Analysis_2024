@@ -95,4 +95,76 @@ def plot_smoking_allowed_boxplots(one_month_file, one_week_file, one_day_file, o
 
     plt.tight_layout()
     plt.savefig(output_file, format='png')
+    
+
+def plot_free_parking_barplots(one_month_file, one_week_file, one_day_file, output_file):
+    """
+    
+    """
+    
+    fig, axes = plt.subplots(1, 3, figsize=(18, 6))  
+
+    
+    data_one_month = pd.read_excel(one_month_file)
+    sns.barplot(x='Free parking', y='Price Per Night', data=data_one_month, palette='Set2', ax=axes[0])
+    axes[0].set_title('One Month Average Price by Free Parking')
+    axes[0].set_xlabel('Free Parking')
+    axes[0].set_ylabel('One Month Price ($)')
+
+   
+    data_one_week = pd.read_excel(one_week_file)
+    sns.barplot(x='Free parking', y='Price Per Night', data=data_one_week, palette='Set2', ax=axes[1])
+    axes[1].set_title('One Week Average Price by Free Parking')
+    axes[1].set_xlabel('Free Parking')
+    axes[1].set_ylabel('One Week Price ($)')
+
+    
+    data_one_day = pd.read_excel(one_day_file)
+    sns.barplot(x='Free parking', y='Price Per Night', data=data_one_day, palette='Set2', ax=axes[2])
+    axes[2].set_title('One Day Average Price by Free Parking')
+    axes[2].set_xlabel('Free Parking')
+    axes[2].set_ylabel('One Day Price ($)')
+
+ 
+    plt.tight_layout()
+    plt.savefig(output_file, format='png')
+  
+
+
+input_path = "./data/"
+output_path = "./artifacts/"
+
+file_path = input_path + 'updated_output_data.xlsx'
+data = pd.read_excel(file_path)
+selected_cities = ['Austin, TX', 'New York City, NY', 'Chicago, IL', 'Los Angeles, CA']
+
+plot_price_distribution(data)
+
+plot_city_comparison_boxplot(data, selected_cities)
+
+
+
+plot_pet_combined_price_distributions(
+    one_day_file=input_path +  'one_day_output_data.xlsx',
+    one_week_file=input_path +  'one_week_output_data.xlsx',
+    one_month_file=input_path + 'one_month_output_data.xlsx',
+    output_file=output_path +  'combined_price_distributions.png'
+)
+
+
+
+plot_free_parking_barplots(
+    one_month_file= input_path + 'one_month_output_data.xlsx',
+    one_week_file= input_path +'one_week_output_data.xlsx',
+    one_day_file= input_path + 'one_day_output_data.xlsx',
+    output_file= output_path +  'combined_barplot_free_parking_price_output.png'
+)
+
+plot_smoking_allowed_boxplots(
+    one_month_file= input_path +'one_month_output_data.xlsx',
+    one_week_file= input_path +  'one_week_output_data.xlsx',
+    one_day_file= input_path + 'one_day_output_data.xlsx',
+    output_file= output_path +'combined_boxplot_smoking_allowed_price.png'
+)
+
    
