@@ -1,10 +1,10 @@
 # Midterm_Project_2024
 
-# Installation
+# Goal of the analysis
+The goal is to analyze listings on Airbnb across four U.S. cities (Austin, New York City, Chicago, and Los Angeles) to determine how pet-friendliness, availability of free parking, and smoking policies impact the rental prices for one adult. The analysis will focus on prices for three different periods: a one-day stay, a one-week stay, and a one-month stay, starting from November 1, 2024.
 
-
-
-# Quick Start
+# Source of dataset
+Airbnb Offical Websites:https://www.airbnb.com
 
 
 # Search Data
