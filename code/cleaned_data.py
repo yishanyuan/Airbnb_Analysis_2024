@@ -1,7 +1,7 @@
 import re
 import json
 
-## Extract check-in and check-out from URL
+# Extract check-in and check-out from URL
 
 def add_checkin_checkout_dates(data):
     """
@@ -121,8 +121,6 @@ def save_to_json(data, filename = "../data/cleaned_data.json"):
         print(f"Data has been successfully saved to {filename}")
     except Exception as e:
         print(f"Error saving to JSON file: {e}")
-
-### Data cleaning
 
 raw_data = load_json_from_file(json_file_path)
 added_check_data = add_checkin_checkout_dates(raw_data)
