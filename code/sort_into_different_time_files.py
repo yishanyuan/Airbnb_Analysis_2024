@@ -28,4 +28,4 @@ ws.column_dimensions['D'].width = 20
 
 wb.save(output_file_path)
 
-print("文件已更新并保存")
+print("updated")
