@@ -100,24 +100,15 @@ This script converts processed JSON files (e.g., cleaned_data.json) into CSV fil
 
 ## CSV Enhancement Script (manipulated_variables.py) ##
 
-This script updates an existing CSV file by adding new columns such as Smoking allowed, Pets allowed, and Free parking. Additionally, it adds a Length of lease column based on the check-out date, marking rows as one day, one week, or one month.
+**Description**This script updates an existing CSV file by adding new columns such as Smoking allowed, Pets allowed, and Free parking. It also adds a Length of lease column based on the check-out date, marking rows as one day, one week, or one month.
 
-	•	Workflow:
-	•	Read the input CSV file (e.g., path_to_your_existing_csv_file.csv) from the data folder.
-	•	Scan the Features column to check for Smoking allowed, Pets allowed, and Free parking.
-	•	Add corresponding columns to indicate whether these features are available.
-	•	Add a Length of lease column, marking as one day, one week, or one month based on specific check-out dates.
-	•	Save the updated CSV file to the data folder.
+**Workflow**The workflow includes reading the input CSV file (e.g., path_to_your_existing_csv_file.csv) from the data folder, scanning the Features column to check for Smoking allowed, Pets allowed, and Free parking, adding corresponding columns to indicate whether these features are available, adding a Length of lease column based on specific check-out dates, and saving the updated CSV file to the data folder.
 
-## Data Processing and Price Adjustment Script (sort_into_different_time_files.py) ##
+## Data Processing and Price Adjustment Script (sort_into_different_time_files.py，split_data.py) ##
 
-This script updates the Length of lease based on Check In and Check Out dates and adjusts prices for records with a length of lease as one week and one month. The processed data is saved as an Excel file.
+**Description**This script updates the Length of lease based on Check In and Check Out dates and adjusts prices for records with a length of lease as one week and one month. It also splits the data into three separate files based on the length of lease: one day, one week, and one month. The processed data is saved as Excel files.
 
-	•	Workflow:
-	•	Read the input CSV file.
-	•	Update the Length of lease based on Check In and Check Out dates.
-	•	Delete unnecessary columns (e.g., Cleaning Fee and Airbnb Service Fee).
-	•	Save the processed data as an Excel file, adjusting the column width for date columns.
+**Workflow**The workflow includes reading the input CSV file, updating the Length of lease based on Check In and Check Out dates, deleting unnecessary columns like Cleaning Fee and Airbnb Service Fee, splitting the data into three files based on the Length of lease, and saving the processed data as Excel files while adjusting the column widths for date columns.
 
 # Visualization Data
 tianyi
