@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
-def plot_price_distribution(data, bins=20, kde=True):
+def plot_price_distribution(data, output_file, bins=20, kde=True):
     """
     
     """
@@ -17,9 +17,10 @@ def plot_price_distribution(data, bins=20, kde=True):
     plt.ylabel('Frequency')
     plt.grid(True)
     plt.tight_layout()
+    plt.savefig(output_file, format='png')
     
 
-def plot_city_comparison_boxplot(data, selected_cities):
+def plot_city_comparison_boxplot(data, selected_cities, output_file):
     """
     
     """
@@ -36,6 +37,7 @@ def plot_city_comparison_boxplot(data, selected_cities):
     plt.grid(True)
     plt.xticks(rotation=45)  
     plt.tight_layout()
+    plt.savefig(output_file, format='png')
 
 def plot_pet_combined_price_distributions(one_day_file, one_week_file, one_month_file, output_file):
     """
@@ -138,32 +140,32 @@ file_path = input_path + 'updated_output_data.xlsx'
 data = pd.read_excel(file_path)
 selected_cities = ['Austin, TX', 'New York City, NY', 'Chicago, IL', 'Los Angeles, CA']
 
-plot_price_distribution(data)
+plot_price_distribution(data, output_file=output_path+"price_distribution.png")
 
-plot_city_comparison_boxplot(data, selected_cities)
+plot_city_comparison_boxplot(data, selected_cities, output_file=output_path+"city_comparison.png")
 
 
 
 plot_pet_combined_price_distributions(
-    one_day_file=input_path +  'one_day_output_data.xlsx',
-    one_week_file=input_path +  'one_week_output_data.xlsx',
-    one_month_file=input_path + 'one_month_output_data.xlsx',
+    one_day_file=input_path +  'one_day.xlsx',
+    one_week_file=input_path +  'one_week.xlsx',
+    one_month_file=input_path + 'one_month.xlsx',
     output_file=output_path +  'combined_price_distributions.png'
 )
 
 
 
 plot_free_parking_barplots(
-    one_month_file= input_path + 'one_month_output_data.xlsx',
-    one_week_file= input_path +'one_week_output_data.xlsx',
-    one_day_file= input_path + 'one_day_output_data.xlsx',
+    one_month_file= input_path + 'one_month.xlsx',
+    one_week_file= input_path +'one_week.xlsx',
+    one_day_file= input_path + 'one_day.xlsx',
     output_file= output_path +  'combined_barplot_free_parking_price_output.png'
 )
 
 plot_smoking_allowed_boxplots(
-    one_month_file= input_path +'one_month_output_data.xlsx',
-    one_week_file= input_path +  'one_week_output_data.xlsx',
-    one_day_file= input_path + 'one_day_output_data.xlsx',
+    one_month_file= input_path +'one_month.xlsx',
+    one_week_file= input_path +  'one_week.xlsx',
+    one_day_file= input_path + 'one_day.xlsx',
     output_file= output_path +'combined_boxplot_smoking_allowed_price.png'
 )
 
