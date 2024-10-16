@@ -1,10 +1,15 @@
 # Midterm_Project_2024
 
-
-# Clean Data
+# Installation
 
 Using the `python3 code/cleaned_data.py` on the cmd to run the data.
 
+# Quick Start
+
+# Scrape Data
+yishan
+
+# Clean Data
 
 ## Extract Check-in and Check-out Dates from URLs
 Using regular expressions to extract the check_in and check_out dates from each listing's URL and adds these dates to the listing details.
@@ -45,3 +50,9 @@ If a listing meets all the criteria, it is added to the cleaned data dictionary.
 
 ## Load and Save JSON Data
 The program includes functions to load data from a JSON file and save the processed data into a new JSON file.
+
+# Manipulate Data
+yefan
+
+# Visualization Data
+tianyi
