@@ -8,8 +8,10 @@ import os
 import json
 
 def search(driver, property_links, where, checkin, checkout, adults=1, children=0, infants=0):
-
-    # Simulate an Airbnb search and scrape property links based on the given search parameters
+    """
+    Simulate an Airbnb search and scrape property links based on the given search parameters
+    """
+    
     base_url = "https://www.airbnb.com/s/homes"
     
     params = {
@@ -54,8 +56,10 @@ def search(driver, property_links, where, checkin, checkout, adults=1, children=
             break
 
 def save_urls(url_list, save_directory, file_name="property_links.json"):
-    
-   # Save the URL list as a JSON file
+    """
+    Save the URL list as a JSON file
+    """
+   
     file_path = os.path.join(save_directory, file_name)
 
     try:
@@ -66,8 +70,10 @@ def save_urls(url_list, save_directory, file_name="property_links.json"):
         print(f"Failed to save URL list to JSON: {e}")
 
 def load_urls(save_directory, file_name="property_links.json"):
+    """
+    Load the saved URL list
+    """
     
-    # Load the saved URL list
     file_path = os.path.join(save_directory, file_name)
 
     try:
