@@ -18,7 +18,7 @@ Automating the process of searching for Airbnb listings based on specified searc
 **Processing Logic:**
 The program constructs a search URL based on user input (location, check-in, check-out, etc.) and uses `Selenium` to navigate to the Airbnb results page. The HTML content of the page is parsed with `BeautifulSoup` to extract property links that contain "/rooms/". The process is repeated for all available pages by clicking the "Next" button until no more results are found. Extracted links are saved in a JSON file and can be loaded later for further use.
 
-# Scraping Data
+# Scrape Data
 Automating the process of searching Airbnb property listings, extracting room details (features, prices, house rules), and saving this data into a JSON file.
 
 **Functions Used:** <br>
