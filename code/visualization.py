@@ -95,4 +95,42 @@ def plot_smoking_allowed_boxplots(one_month_file, one_week_file, one_day_file, o
 
     plt.tight_layout()
     plt.savefig(output_file, format='png')
+    
+
+input_path = "../data/"
+output_path = "../artifacts/"
+
+file_path = input_path + 'updated_output_data.xlsx'
+data = pd.read_excel(file_path)
+selected_cities = ['Austin, TX', 'New York City, NY', 'Chicago, IL', 'Los Angeles, CA']
+
+plot_price_distribution(data)
+
+plot_city_comparison_boxplot(data, selected_cities)
+
+
+
+plot_pet_combined_price_distributions(
+    one_day_file=input_path +  'one_day_output_data.xlsx',
+    one_week_file=input_path +  'one_week_output_data.xlsx',
+    one_month_file=input_path + 'one_month_output_data.xlsx',
+    output_file=output_path +  'combined_price_distributions.png'
+)
+
+
+
+plot_free_parking_barplots(
+    one_month_file= input_path + 'one_month_output_data.xlsx',
+    one_week_file= input_path +'one_week_output_data.xlsx',
+    one_day_file= input_path + 'one_day_output_data.xlsx',
+    output_file= output_path +  'combined_barplot_free_parking_price_output.png'
+)
+
+plot_smoking_allowed_boxplots(
+    one_month_file= input_path +'one_month_output_data.xlsx',
+    one_week_file= input_path +  'one_week_output_data.xlsx',
+    one_day_file= input_path + 'one_day_output_data.xlsx',
+    output_file= output_path +'combined_boxplot_smoking_allowed_price.png'
+)
+
    
