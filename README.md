@@ -24,7 +24,7 @@ Automating the process of searching Airbnb property listings, extracting room de
 **Functions Used:** <br>
 `open`: Initialize the headless browser using `Selenium` WebDriver with customized options.<br>
 `close`: Close the `Selenium` WebDriver once all operations are completed.<br>
-`search`: Searche for property links based on specified parameters (location, check-in, check-out).<br>
+`search`: Search for property links based on specified parameters (location, check-in, check-out).<br>
 `save_urls`: Save the collected property links into a JSON file.<br>
 `load_urls`: Load previously saved property links from a JSON file.<br>
 `get_room_details_page`: Load and parse the room details page using `BeautifulSoup`.<br>
