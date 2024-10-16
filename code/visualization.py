@@ -68,3 +68,31 @@ def plot_pet_combined_price_distributions(one_day_file, one_week_file, one_month
    
     plt.tight_layout()
     plt.savefig(output_file, format='png')
+
+def plot_smoking_allowed_boxplots(one_month_file, one_week_file, one_day_file, output_file):
+    fig, axes = plt.subplots(1, 3, figsize=(18, 6)) 
+
+    
+    data_one_month = pd.read_excel(one_month_file)
+    sns.boxplot(x='Smoking allowed', y='Price Per Night', data=data_one_month, palette='Set2', ax=axes[0])
+    axes[0].set_title('One Month Price Distribution by Smoking Allowed')
+    axes[0].set_xlabel('Smoking Allowed')
+    axes[0].set_ylabel('One Month Price ($)')
+
+    
+    data_one_week = pd.read_excel(one_week_file)
+    sns.boxplot(x='Smoking allowed', y='Price Per Night', data=data_one_week, palette='Set2', ax=axes[1])
+    axes[1].set_title('One Week Price Distribution by Smoking Allowed')
+    axes[1].set_xlabel('Smoking Allowed')
+    axes[1].set_ylabel('One Week Price ($)')
+
+   
+    data_one_day = pd.read_excel(one_day_file)
+    sns.boxplot(x='Smoking allowed', y='Price Per Night', data=data_one_day, palette='Set2', ax=axes[2])
+    axes[2].set_title('One Day Price Distribution by Smoking Allowed')
+    axes[2].set_xlabel('Smoking Allowed')
+    axes[2].set_ylabel('One Day Price ($)')
+
+    plt.tight_layout()
+    plt.savefig(output_file, format='png')
+   
