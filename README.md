@@ -118,5 +118,38 @@ This script updates the Length of lease based on Check In and Check Out dates an
 
 The workflow includes reading the input CSV file, updating the Length of lease based on Check In and Check Out dates, deleting unnecessary columns like Cleaning Fee and Airbnb Service Fee, splitting the data into three files based on the Length of lease, and saving the processed data as Excel files while adjusting the column widths for date columns.
 
-# Visualization Data
-tianyi
+# Visualization And Analysis #
+
+## Visualization ##
+
+This part generates a variety of visualizations for analyzing Airbnb prices based on different factors such as city, free parking availability, pet allowance, and smoking policies. It uses Python libraries, including matplotlib, seaborn, and pandas, to create histograms, bar plots, and boxplots from data stored in Excel files .Each of these functions reads data from Excel files, processes it for the respective analysis (e.g., comparing cities, or analyzing policy effects), and generates visualizations, which are saved to a specified output location.
+
+**Functions Used:**
+`plot_price_distribution`: Generates a histogram showing one-day Airbnb price distribution.
+`plot_city_comparison_boxplot`: Creates a boxplot comparing one-day prices across selected cities.
+`plot_pet_combined_price_distributions` Visualizes price distributions for one-day, one-week, and one-month stays based on pet allowance.
+`plot_smoking_allowed_boxplots`: Plots boxplots to compare prices for smoking and non-smoking listings.
+`plot_free_parking_barplots`: Compares average prices for listings with and without free parking for different lease durations.
+'`output_path = "./artifacts/"`: This specifies that the generated visualizations (PNG files) will be saved in a folder named artifacts, which is also located in the current working directory.
+
+
+##  Analysis ##
+**General Price Distribution**
+![](./artiacts/price_distribution.png)
+The histogram shows the price distribution of one-day Airbnb listings, with the x-axis representing the price per night and the y-axis showing the frequency of listings at each price point. The distribution is right-skewed, with most one-day Airbnb listings priced between $100–$150. Higher-priced listings above $200 are rare, indicating that the majority of listings are affordable, while luxury options are limited. The skew suggests that more affordable listings dominate the market, with only a few high-end accommodations available.
+
+** City Comparison**
+![](./artiacts/city_comparison.png)
+The boxplot compares one-day Airbnb prices across four cities: Austin, New York City, Chicago, and Los Angeles. Austin has the highest median price (~$200), while New York City has a broader range with many lower-priced options but also several high-end outliers. Chicago and Los Angeles show more consistent pricing with fewer extreme values. Overall, Austin's prices vary widely, New York City has significant variation, and both Chicago and Los Angeles have more stable pricing with less variation in outliers.
+
+** The effect of free parking**
+[](./artiacts/combined_barplot_free_parking_price_output)
+For one-month stays, prices are similar regardless of free parking. For one-day stays, listings with free parking are cheaper. Free parking shows minimal impact on one-week prices but slightly lowers prices for short-term stays. Location could indeed be a key reason for the price differences. In urban areas where parking is scarce, listings without free parking may be in more desirable or central locations, which can drive up their price. Conversely, listings with free parking might be located in less central areas where parking is easier to offer, leading to lower prices for short-term stays. For one-month rentals, location might play less of a role in price differences, as long-term renters may prioritize other factors over parking, such as proximity to work or public transport.
+
+** The effect of pet allowed**
+[](./artiacts/combined_price_distributions)
+The graphs show price distributions for one-month, one-week, and one-day Airbnb listings, separated by whether pets are allowed or not.  In the One-Month Price Distribution (left), listings that allow pets (orange) are generally priced higher than those that do not, especially in the lower price ranges (up to $100). This suggests that pet-friendly long-term rentals may command a premium. In the One-Week Price Distribution (middle), a similar trend is observed, with pet-friendly listings taking a larger share in the higher price ranges compared to non-pet listings, though the difference is less pronounced than for one-month stays. For the One-Day Price Distribution (right), pet-friendly listings are more spread across various price ranges but still maintain a noticeable presence in the lower price brackets. The overall effect of allowing pets is less significant for one-day stays compared to longer-term rentals. Possible reasons for these differences include higher demand for pet-friendly listings, as renters with pets may be willing to pay more for accommodations that meet their needs, especially for long stays. Additionally, added costs for hosts associated with allowing pets, such as maintenance and cleaning, could lead to higher pricing, particularly for longer rental periods.
+
+** The effect of smoking allowed**
+[](./artiacts/combined_boxplot_smoking_allowed_price)
+The boxplots show price distributions for one-month, one-week, and one-day Airbnb listings, comparing those that allow smoking versus those that do not. Listings that do not allow smoking tend to have higher prices and a wider price range, especially for one-month and one-week stays. This may be due to higher demand for non-smoking accommodations, particularly in family-friendly or urban areas, where smoking is less accepted. Non-smoking listings likely attract a broader market and are perceived as cleaner or more desirable, allowing hosts to charge a premium. Smoking-allowed listings, on the other hand, cater to a more niche audience, which could explain their lower prices and narrower price range, particularly for longer stays. For one-day stays, the price difference is less significant.
