@@ -108,7 +108,7 @@ This script updates an existing CSV file by adding new columns such as Smoking a
 
 The workflow includes reading the input CSV file (e.g., path_to_your_existing_csv_file.csv) from the data folder, scanning the Features column to check for Smoking allowed, Pets allowed, and Free parking, adding corresponding columns to indicate whether these features are available, adding a Length of lease column based on specific check-out dates, and saving the updated CSV file to the data folder.
 
-## Data Processing and Price Adjustment Script (sort_into_different_time_files.py，split_data.py) ##
+## Data Processing and Price Adjustment Script (sort_into_different_time_files.py and split_data.py) ##
 
 **Description**
 
