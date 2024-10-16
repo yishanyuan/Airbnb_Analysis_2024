@@ -118,7 +118,7 @@ This script updates the Length of lease based on Check In and Check Out dates an
 
 The workflow includes reading the input CSV file, updating the Length of lease based on Check In and Check Out dates, deleting unnecessary columns like Cleaning Fee and Airbnb Service Fee, splitting the data into three files based on the Length of lease, and saving the processed data as Excel files while adjusting the column widths for date columns.
 
-# Visualization And Analysis #
+# Visualization And Finding #
 
 ## Visualization ##
 
@@ -134,7 +134,7 @@ This part generates a variety of visualizations for analyzing Airbnb prices base
 '`output_path = "./artifacts/"`: This specifies that the generated visualizations (PNG files) will be saved in a folder named artifacts, which is also located in the current working directory.
 
 
-##  Analysis ##
+##  Finding and Analysis ##
 **General Price Distribution**
 
 ![](./artifacts/price_distribution.png)
