@@ -52,7 +52,31 @@ If a listing meets all the criteria, it is added to the cleaned data dictionary.
 The program includes functions to load data from a JSON file and save the processed data into a new JSON file.
 
 # Manipulate Data
-yefan
+
+## JSON to CSV Conversion Script (Change_file_format.py) ##
+
+This script converts processed JSON files (e.g., cleaned_data.json) into CSV files. It reads data from a JSON file, extracts fields such as URL, city, check-in/check-out dates, features, and price details, and writes the data into CSV format. The generated CSV file is saved in the data folder. The workflow involves reading JSON data from cleaned_data.json, extracting fields like city, check-in/check-out dates, features, and prices, converting the data into CSV format, and saving the output CSV file (e.g., output_data.csv) to the data folder.
+
+## CSV Enhancement Script (manipulated_variables.py) ##
+
+This script updates an existing CSV file by adding new columns such as Smoking allowed, Pets allowed, and Free parking. Additionally, it adds a Length of lease column based on the check-out date, marking rows as one day, one week, or one month.
+
+	•	Workflow:
+	•	Read the input CSV file (e.g., path_to_your_existing_csv_file.csv) from the data folder.
+	•	Scan the Features column to check for Smoking allowed, Pets allowed, and Free parking.
+	•	Add corresponding columns to indicate whether these features are available.
+	•	Add a Length of lease column, marking as one day, one week, or one month based on specific check-out dates.
+	•	Save the updated CSV file to the data folder.
+
+## Data Processing and Price Adjustment Script (sort_into_different_time_files.py) ##
+
+This script updates the Length of lease based on Check In and Check Out dates and adjusts prices for records with a length of lease as one week and one month. The processed data is saved as an Excel file.
+
+	•	Workflow:
+	•	Read the input CSV file.
+	•	Update the Length of lease based on Check In and Check Out dates.
+	•	Delete unnecessary columns (e.g., Cleaning Fee and Airbnb Service Fee).
+	•	Save the processed data as an Excel file, adjusting the column width for date columns.
 
 # Visualization Data
 tianyi
