@@ -11,9 +11,9 @@
 Automating the process of searching for Airbnb listings based on specified search parameters, extracting property links, and saving/loading these links for future use.
 
 **Functions Used:** <br>
-`search`: Simulates an Airbnb search with specific parameters (location, check-in, check-out dates, and guest details) and extracts property links from the results.<br>
-`save_urls`: Saves the extracted property links to a JSON file.<br>
-`load_urls`: Loads saved property links from a JSON file for future processing.<br>
+`search`: Simulate an Airbnb search with specific parameters (location, check-in, check-out dates, and guest details) and extracts property links from the results.<br>
+`save_urls`: Save the extracted property links to a JSON file.<br>
+`load_urls`: Load saved property links from a JSON file for future processing.<br>
 
 **Processing Logic:**
 The program constructs a search URL based on user input (location, check-in, check-out, etc.) and uses `Selenium` to navigate to the Airbnb results page. The HTML content of the page is parsed with `BeautifulSoup` to extract property links that contain "/rooms/". The process is repeated for all available pages by clicking the "Next" button until no more results are found. Extracted links are saved in a JSON file and can be loaded later for further use.
@@ -22,14 +22,14 @@ The program constructs a search URL based on user input (location, check-in, che
 Automating the process of searching Airbnb property listings, extracting room details (features, prices, house rules), and saving this data into a JSON file.
 
 **Functions Used:** <br>
-`open`: Initializes the headless browser using `Selenium` WebDriver with customized options.<br>
-`close`: Closes the `Selenium` WebDriver once all operations are completed.<br>
-`search`: Searches for property links based on specified parameters (location, check-in, check-out).<br>
-`save_urls`: Saves the collected property links into a JSON file.<br>
-`load_urls`: Loads previously saved property links from a JSON file.<br>
-`get_room_details_page`: Loads and parses the room details page using `BeautifulSoup`.<br>
+`open`: Initialize the headless browser using `Selenium` WebDriver with customized options.<br>
+`close`: Close the `Selenium` WebDriver once all operations are completed.<br>
+`search`: Searche for property links based on specified parameters (location, check-in, check-out).<br>
+`save_urls`: Save the collected property links into a JSON file.<br>
+`load_urls`: Load previously saved property links from a JSON file.<br>
+`get_room_details_page`: Load and parse the room details page using `BeautifulSoup`.<br>
 `extract_room_features`, `extract_price_info`, `extract_house_rules`: Extract room features, pricing details, and house rules respectively from each property page.<br>
-`save_to_json`: Saves the extracted room details into a JSON file.<br>
+`save_to_json`: Save the extracted room details into a JSON file.<br>
 
 **Processing Logic:**
 The program starts by opening a headless browser using `Selenium` WebDriver. It performs a search for property listings based on specified cities and check-in/check-out dates. Property links are extracted, and they can be saved to or loaded from a JSON file. For each property link, the page is loaded, and details such as room features, prices, and house rules are extracted. The extracted data is stored in a dictionary and saved into a JSON file for further use. After completing the extraction process, the browser is closed.
@@ -39,11 +39,11 @@ The program starts by opening a headless browser using `Selenium` WebDriver. It 
 Extracting detailed information about Airbnb properties (room features, prices, and house rules) from property URLs and saving this information into a JSON file.
 
 **Functions Used:** <br>
-`get_room_details_page`: Loads and parses the room details page using `BeautifulSoup` after interacting with the webpage (e.g., closing popups).<br>
-`extract_room_features`: Extracts room features by clicking the "Show all amenities" button and parsing the content.<br>
-`extract_price_info`: Extracts pricing information including nightly rates, cleaning fees, and other costs from the room details page.<br>
-`extract_house_rules`: Extracts the house rules of a room by clicking the "Show more" button and parsing the content.<br>
-`save_to_json`: Saves the extracted room details into a JSON file for further use.<br>
+`get_room_details_page`: Load and parse the room details page using `BeautifulSoup` after interacting with the webpage (e.g., closing popups).<br>
+`extract_room_features`: Extract room features by clicking the "Show all amenities" button and parsing the content.<br>
+`extract_price_info`: Extract pricing information including nightly rates, cleaning fees, and other costs from the room details page.<br>
+`extract_house_rules`: Extract the house rules of a room by clicking the "Show more" button and parsing the content.<br>
+`save_to_json`: Save the extracted room details into a JSON file for further use.<br>
 
 **Processing Logic:**
 For each property URL, the page is loaded and any popups (like translation prompts) are closed. `BeautifulSoup` is then used to parse the page's HTML content, and relevant room details (features, prices, house rules) are extracted. Room features are retrieved by interacting with a "Show all amenities" button, while price information is obtained from specific sections on the page. House rules are similarly extracted by interacting with a "Show more" button. Finally, all extracted data is saved into a JSON file for future processing or analysis.
