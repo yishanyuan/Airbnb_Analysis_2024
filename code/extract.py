@@ -200,6 +200,10 @@ def extract_house_rules(driver):
         return []
     
 def save_to_json(data, filename = "rooms_details.json"):
+    """
+    Save the dictionary data into a JSON file
+    """
+    
     try:
         with open(filename, 'w', encoding='utf-8') as json_file:
             json.dump(data, json_file, ensure_ascii=False, indent=4)
