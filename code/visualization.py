@@ -36,3 +36,35 @@ def plot_city_comparison_boxplot(data, selected_cities):
     plt.grid(True)
     plt.xticks(rotation=45)  
     plt.tight_layout()
+
+def plot_pet_combined_price_distributions(one_day_file, one_week_file, one_month_file, output_file):
+    """
+    
+    """
+    
+    fig, axes = plt.subplots(1, 3, figsize=(18, 6)) 
+
+    
+    data_one_month = pd.read_excel(one_month_file)
+    sns.histplot(data=data_one_month, x='Price Per Night', hue='Pets allowed', multiple='stack', bins=20, palette='Set2', ax=axes[0])
+    axes[0].set_title('One Month Price Distribution')
+    axes[0].set_xlabel('One Month Price ($)')
+    axes[0].set_ylabel('Count')
+
+   
+    data_one_week = pd.read_excel(one_week_file)
+    sns.histplot(data=data_one_week, x='Price Per Night', hue='Pets allowed', multiple='stack', bins=20, palette='Set2', ax=axes[1])
+    axes[1].set_title('One Week Price Distribution')
+    axes[1].set_xlabel('One Week Price ($)')
+    axes[1].set_ylabel('')
+
+    
+    data_one_day = pd.read_excel(one_day_file)
+    sns.histplot(data=data_one_day, x='Price Per Night', hue='Pets allowed', multiple='stack', bins=20, palette='Set2', ax=axes[2])
+    axes[2].set_title('One Day Price Distribution')
+    axes[2].set_xlabel('One Day Price ($)')
+    axes[2].set_ylabel('')
+
+   
+    plt.tight_layout()
+    plt.savefig(output_file, format='png')
