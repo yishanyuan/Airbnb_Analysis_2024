@@ -1,66 +1,66 @@
 import re
 import json
 
-##从URL中提取check-in和check-out
+## Extract check-in and check-out from URL
 
 def add_checkin_checkout_dates(data):
     """
-    从 JSON 对象的 URL 键中提取 check_in 和 check_out 日期，并将它们添加到每个房源的详细信息中。
+    Extract the check_in and check_out dates from the URL key in the JSON object and add them to each listing's details.
 
-    参数:
-    data (dict): 原始 JSON 数据，其中 URL 是每个键。
+    Parameters:
+    data (dict): The original JSON data with the URL as each key.
 
-    返回:
-    dict: 更新后的 JSON 数据，带有 check_in 和 check_out 日期。
+    Returns:
+    dict: The updated JSON data with the check_in and check_out dates.
     """
-    # 正则表达式用于匹配 check_in 和 check_out 日期
+    # Use regular expression used to match check_in and check_out dates
     date_pattern = r'check_in=(\d{4}-\d{2}-\d{2})&check_out=(\d{4}-\d{2}-\d{2})'
     
-    # 新字典，用于存储更新后的数据
+    # New dictionary to store updated data
     updated_data = {}
     
-    # 遍历所有 URL
+    # Iterate over all URLs
     for key, value in data.items():
         match = re.search(date_pattern, key)
         if match:
-            # 提取日期
+            # Extraction date
             check_in, check_out = match.groups()
-            # 将新日期添加到 value 字典中
+            # Add the new date to the value dictionary
             value['check_in'] = check_in
             value['check_out'] = check_out
-        # 将更新后的 value 重新添加到 updated_data 中
+        # Add the updated value back to updated_data
         updated_data[key] = value
     
     return updated_data
 
-# 房源归属地提取
+# Extract the property location
 def assign_city_to_listings(data):
     """
-    根据 JSON 对象的 checkout 日期将房源归属于不同的城市。
+    Assign properties to different cities based on the checkout date in a JSON object.
 
-    参数:
-    data (dict): 包含房源信息的 JSON 数据，其中每个房源的键是 URL 字符串。
-    cities (list): 城市名称列表，按照爬取顺序提供。
+    Parameters:
+    data (dict): JSON data containing property information, where the key for each property is a URL string.
+    cities (list): List of city names, in the order in which they were crawled.
 
-    返回:
-    dict: 更新后的 JSON 数据，带有每个房源的归属城市信息。
+    Returns:
+    dict: Updated JSON data with the city information for each property.
     """
     cities = ["Austin, TX", "New York City, NY", "Chicago, IL", "Los Angeles, CA"]
 
-    city_index = 0  # 用于跟踪当前的城市
-    updated_data = {}  # 用于存储更新后的数据
+    city_index = 0  # Used to track the current city
+    updated_data = {}  # Used to store updated data
     city_30_batch = False
 
-    # 遍历所有 URL 和详细信息
+    # Iterate through all URLs and details
     for key, value in data.items():
-        # 如果当前房源的 checkout 日期是 "2024-11-30" 并且已经进入下一批数据
+        # If the checkout date of the current listing is "2024-11-30" and has entered the next batch of data
         if value.get("check_out") == "2024-11-30":
             city_30_batch = True
         if city_30_batch and (value.get("check_out") == "2024-11-02"):
             city_30_batch = False
             city_index = city_index + 1
 
-        # 将当前房源归属城市添加到房源的详细信息中
+        # Add the city of the current listing to the listing details
         value["city"] = cities[city_index]
         updated_data[key] = value
 
@@ -68,30 +68,30 @@ def assign_city_to_listings(data):
 
 def clean_invalid_records(data):
     """
-    清除包含无效数据的记录：
-    - URL 不以 https 开头
-    - features 为空
-    - prices 为空
-    - house_rules 为空
+    Clear records with invalid data:
+    URL does not start with https
+    features is empty
+    prices is empty
+    house_rules is empty
 
-    参数:
-    data (dict): 原始 JSON 数据。
+    Parameters:
+    data (dict): Raw JSON data.
 
-    返回:
-    dict: 清除无效记录后的数据。
+    Returns:
+    dict: Data after clearing invalid records.
     """
     cleaned_data = {}
 
     for url, details in data.items():
-        # 检查 URL 是否以 https 开头
+        # Check if the URL starts with https
         if not url.startswith("https"):
             continue
 
-        # 检查 features, prices 和 house_rules 是否为空
+        # Check if features, prices and house_rules are empty
         if len(details.get("features")) == 0 or len(details.get("prices")) == 0 or len(details.get("house_rules")) == 0:
             continue
 
-        # 如果记录有效，则添加到 cleaned_data 中
+        # If the record is valid, it is added to cleaned_data
         cleaned_data[url] = details
 
     return cleaned_data
@@ -100,29 +100,29 @@ json_file_path = "../data/file.json"
 
 def load_json_from_file(file_path):
     """
-    解析给定的 JSON 文件并将其加载为字典对象。
-    
-    参数:
-    file_path (str): JSON 文件的路径。
-    
-    返回:
-    dict: 解析后的 JSON 数据。
+    Parse the given JSON file and load it as a dictionary object.
+
+    Parameters:
+    file_path (str): The path to the JSON file.
+
+    Returns:
+    dict: The parsed JSON data.
     """
     with open(file_path, 'r', encoding='utf-8') as file:
-        data = json.load(file)  # 使用 json.load() 读取文件并解析为字典
+        data = json.load(file)  # Use json.load() to read the file and parse it into a dictionary
     return data
 
-# 保存清洗完的 json
+# Save the cleaned json
 def save_to_json(data, filename = "../data/cleaned_data.json"):
     try:
-        # 将字典数据保存到 JSON 文件
+        # Save dictionary data to JSON file
         with open(filename, 'w', encoding='utf-8') as json_file:
             json.dump(data, json_file, ensure_ascii=False, indent=4)
-        print(f"数据已成功保存到 {filename}")
+        print(f"Data has been successfully saved to {filename}")
     except Exception as e:
-        print(f"保存到 JSON 文件时出错: {e}")
+        print(f"Error saving to JSON file: {e}")
 
-###数据清洗
+### Data cleaning
 
 raw_data = load_json_from_file(json_file_path)
 added_check_data = add_checkin_checkout_dates(raw_data)
