@@ -25,7 +25,7 @@ def search(driver, property_links, where, checkin, checkout, adults=1, children=
         "search_type": "autocomplete_click",
         "source": "structured_search_input_header",
     }
-
+    # Construct the initial search URL
     search_url = f"{base_url}?{urlencode(params)}"
     
     driver.get(search_url)
