@@ -82,9 +82,29 @@ The program includes functions to load data from a JSON file and save the proces
 
 ## JSON to CSV Conversion Script (Change_file_format.py) ##
 
+**Key Functions:**<br>
+
+`load_json_data`: Load the JSON data from a specified file path.<br>
+`write_csv_header`: Write the header to the output CSV file.<br>
+`write_csv_rows`: Write rows of room data extracted from the JSON file into the CSV.<br>
+get_row_details: Extract specific room details (city, check-in/check-out, features, and pricing information) for each property from the JSON data.<br>
+`generate_csv`: Create a CSV file with the extracted room data including URL, features, and pricing details.<br>
+`close_json_file`: Close the JSON file after reading all the data.<br>
+
+**Processing Logic:**
+
 This script converts processed JSON files (e.g., cleaned_data.json) into CSV files. It reads data from a JSON file, extracts fields such as URL, city, check-in/check-out dates, features, and price details, and writes the data into CSV format. The generated CSV file is saved in the data folder. The workflow involves reading JSON data from cleaned_data.json, extracting fields like city, check-in/check-out dates, features, and prices, converting the data into CSV format, and saving the output CSV file (e.g., output_data.csv) to the data folder.
 
 ## CSV Enhancement Script (manipulated_variables.py) ##
+
+**Key Functions:**<br>
+
+`load_csv_data`: Load the input CSV file into a pandas DataFrame for further processing.<br>
+`define_base_directory`: Define the base directory for the project by moving up one level from the current file location.<br>
+`extract_and_add_feature_columns`: Add new feature columns (e.g., ‘Smoking allowed’, ‘Pets allowed’, ‘Free parking’) by checking if specific keywords are present in the ‘Features’ column.<br>
+`save_updated_csv`: Save the modified DataFrame (with additional feature columns) to a new CSV file.<br>
+`close_csv_file`: Close the original CSV file once the data is read and processed.<br>
+
 
 **Description**
 
@@ -95,6 +115,17 @@ This script updates an existing CSV file by adding new columns such as Smoking a
 The workflow includes reading the input CSV file (e.g., path_to_your_existing_csv_file.csv) from the data folder, scanning the Features column to check for Smoking allowed, Pets allowed, and Free parking, adding corresponding columns to indicate whether these features are available, adding a Length of lease column based on specific check-out dates, and saving the updated CSV file to the data folder.
 
 ## Data Processing and Price Adjustment Script (sort_into_different_time_files.py and split_data.py) ##
+
+**Key Functions:**<br>
+
+`load_csv_data`: Load the input CSV file into a pandas DataFrame for processing.<br>
+`add_length_of_lease_column`: Add a new column ‘Length of lease’ and populate it based on the ‘Check Out’ date values.<br>
+`drop_unnecessary_columns`: Remove the ‘Cleaning Fee’ and ‘Airbnb Service Fee’ columns from the DataFrame.<br>
+`adjust_price_for_one_month`: Modify the ‘Price Per Night’ for rows with a ‘one month’ lease, dividing the price by 30 to reflect the per-night rate.<br>
+`save_to_excel`: Save the updated DataFrame to an Excel file.<br>
+`adjust_excel_column_widths`: Adjust the widths of specific columns (‘C’ and ‘D’) in the Excel sheet for better readability.<br>
+`save_excel_file`: Save the final Excel file after applying all modifications.<br>
+`filter_by_lease_length`: Filter the data based on the ‘Length of lease’ column, creating separate DataFrames for ‘one day’, ‘one week’, and ‘one month’ lease durations.<br>
 
 **Description**
 
