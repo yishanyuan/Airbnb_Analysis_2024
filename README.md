@@ -1,4 +1,4 @@
-# Data analysis: Rental prices on Airbnb
+# Data Analysis: Rental Prices on Airbnb
 ### Group Name: Avocado
 
 # Goal of the analysis
