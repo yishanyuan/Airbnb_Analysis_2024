@@ -126,13 +126,12 @@ This part generates a variety of visualizations for analyzing Airbnb prices base
 
 **Functions Used:**
 
-`plot_price_distribution`: Generates a histogram showing one-day Airbnb price distribution.
-`plot_city_comparison_boxplot`: Creates a boxplot comparing one-day prices across selected cities.
-`plot_pet_combined_price_distributions` Visualizes price distributions for one-day, one-week, and one-month stays based on pet allowance.
-`plot_smoking_allowed_boxplots`: Plots boxplots to compare prices for smoking and non-smoking listings.
-`plot_free_parking_barplots`: Compares average prices for listings with and without free parking for different lease durations.
-'`output_path = "./artifacts/"`: This specifies that the generated visualizations (PNG files) will be saved in a folder named artifacts, which is also located in the current working directory.
-
+`plot_price_distribution`: Generates a histogram showing one-day Airbnb price distribution.<br>
+`plot_city_comparison_boxplot`: Creates a boxplot comparing one-day prices across selected cities.<br>
+`plot_pet_combined_price_distributions` Visualizes price distributions for one-day, one-week, and one-month stays based on pet allowance.<br>
+`plot_smoking_allowed_boxplots`: Plots boxplots to compare prices for smoking and non-smoking listings.<br>
+`plot_free_parking_barplots`: Compares average prices for listings with and without free parking for different lease durations.<br>
+'`output_path = "./artifacts/"`: This specifies that the generated visualizations (PNG files) will be saved in a folder named artifacts, which is also located in the current working directory.<br>
 
 ##  Finding and Analysis ##
 **General Price Distribution**
@@ -161,7 +160,7 @@ The graphs show price distributions for one-month, one-week, and one-day Airbnb 
 The boxplots show price distributions for one-month, one-week, and one-day Airbnb listings, comparing those that allow smoking versus those that do not. Listings that do not allow smoking tend to have higher prices and a wider price range, especially for one-month and one-week stays. This may be due to higher demand for non-smoking accommodations, particularly in family-friendly or urban areas, where smoking is less accepted. Non-smoking listings likely attract a broader market and are perceived as cleaner or more desirable, allowing hosts to charge a premium. Smoking-allowed listings, on the other hand, cater to a more niche audience, which could explain their lower prices and narrower price range, particularly for longer stays. For one-day stays, the price difference is less significant.
 
 # Limitation
-While scraping and analyzing Airbnb listings can provide some valuable insights into market trends, some limitations must be acknowledged. First, Airbnb limits each search to 15 pages of listings, which limits the number of listings that can be extracted and may result in a biased dataset that does not fully represent the market. Another limitation in the data cleaning process is the way missing data was handled. Rather than handling or imputing missing values, we chose to simply delete records with missing data(about 3%). This may result in the loss of potentially valuable information and may introduce bias if certain types of listings are more likely to have incomplete data. In addition, all prices in the dataset reflect only the base price and do not include cleaning fees and taxes, which may further affect the accuracy of the analysis, especially in markets where these additional fees vary greatly between listings. In addition, location data is  not taken into account, which may miss significant price changes affected by distance from the city center or tourist attractions. These limitations may affect the generalizability and accuracy of the results.
+While scraping and analyzing Airbnb listings can provide some valuable insights into market trends, limitations must be acknowledged. First, Airbnb limits each search to 15 pages of listings, which limits the number of listings that can be extracted and may result in a biased dataset that does not fully represent the market. Another limitation in the data cleaning process is the way missing data was handled. Rather than handling or imputing missing values, we chose to simply delete records with missing data(about 3%). This may result in the loss of potentially valuable information and may introduce bias if certain types of listings are more likely to have incomplete data. In addition, all prices in the dataset reflect only the base price and do not include cleaning fees and taxes, which may further affect the accuracy of the analysis, especially in markets where these additional fees vary greatly between listings. Moreover, location data is not taken into account, which may miss significant price changes affected by distance from the city center or tourist attractions. These limitations may affect the generalizability and accuracy of the results.
 
 
 #  Further Research
