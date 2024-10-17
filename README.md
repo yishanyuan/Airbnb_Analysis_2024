@@ -107,7 +107,7 @@ The workflow includes reading the input CSV file, updating the Length of lease b
 # Visualization And Finding #
 
 ## Visualization ##
-
+Using the `python3 code/visualization.py`  on the cmd to run the data. <br>
 This part generates a variety of visualizations for analyzing Airbnb prices based on different factors such as city, free parking availability, pet allowance, and smoking policies. It uses Python libraries, including matplotlib, seaborn, and pandas, to create histograms, bar plots, and boxplots from data stored in Excel files .Each of these functions reads data from Excel files, processes it for the respective analysis (e.g., comparing cities, or analyzing policy effects), and generates visualizations, which are saved to a specified output location.
 
 **Functions Used:**
