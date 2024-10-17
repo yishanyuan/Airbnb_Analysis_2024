@@ -79,6 +79,7 @@ The program includes functions to load data from a JSON file and save the proces
 
 
 # Manipulate Data
+Using the `python3 code/Change_file_format.py`, `python3 code/manipulated_variables.py`, `python3 code/sort_into_different_time_files.py` and `python3 code/split_data.py` on the cmd to run the data.
 
 ## JSON to CSV Conversion Script (Change_file_format.py) ##
 
