@@ -8,7 +8,7 @@ The goal is to analyze listings on Airbnb across four U.S. cities (Austin, New Y
 Airbnb Offical Websites:https://www.airbnb.com
 
 # Scrape Data
-Using the `python3 code/scrape.py` on the cmd to run the data.
+Using the `python3 code/search.py`, `python3 code/extract.py`, and `python3 code/scrape.py` on the cmd to run the data.
 
 ## Search For Airbnb Listings and Save Links
 
