@@ -81,7 +81,7 @@ The program includes functions to load data from a JSON file and save the proces
 # Manipulate Data
 Using the `python3 code/Change_file_format.py`, `python3 code/manipulated_variables.py`, `python3 code/sort_into_different_time_files.py` and `python3 code/split_data.py` on the cmd to run the data.
 
-## JSON to CSV Conversion Script (Change_file_format.py) ##
+## JSON to CSV Conversion ##
 
 **Key Functions:**<br>
 
@@ -96,7 +96,7 @@ get_row_details: Extract specific room details (city, check-in/check-out, featur
 
 This script converts processed JSON files (e.g., cleaned_data.json) into CSV files. It reads data from a JSON file, extracts fields such as URL, city, check-in/check-out dates, features, and price details, and writes the data into CSV format. The generated CSV file is saved in the data folder. The workflow involves reading JSON data from cleaned_data.json, extracting fields like city, check-in/check-out dates, features, and prices, converting the data into CSV format, and saving the output CSV file (e.g., output_data.csv) to the data folder.
 
-## CSV Enhancement Script (manipulated_variables.py) ##
+## CSV Enhancement ##
 
 **Key Functions:**<br>
 
@@ -115,7 +115,7 @@ This script updates an existing CSV file by adding new columns such as Smoking a
 
 The workflow includes reading the input CSV file (e.g., path_to_your_existing_csv_file.csv) from the data folder, scanning the Features column to check for Smoking allowed, Pets allowed, and Free parking, adding corresponding columns to indicate whether these features are available, adding a Length of lease column based on specific check-out dates, and saving the updated CSV file to the data folder.
 
-## Data Processing and Price Adjustment Script (sort_into_different_time_files.py and split_data.py) ##
+## Data Processing and Price Adjustment ##
 
 **Key Functions:**<br>
 
@@ -136,13 +136,13 @@ This script updates the Length of lease based on Check In and Check Out dates an
 
 The workflow includes reading the input CSV file, updating the Length of lease based on Check In and Check Out dates, deleting unnecessary columns like Cleaning Fee and Airbnb Service Fee, splitting the data into three files based on the Length of lease, and saving the processed data as Excel files while adjusting the column widths for date columns.
 
-# Visualization And Finding #
+# Visualization And Findings #
 
 ## Visualization ##
 Using the `python3 code/visualization.py`  on the cmd to run the data. <br>
 This part generates a variety of visualizations for analyzing Airbnb prices based on different factors such as city, free parking availability, pet allowance, and smoking policies. It uses Python libraries, including matplotlib, seaborn, and pandas, to create histograms, bar plots, and boxplots from data stored in Excel files .Each of these functions reads data from Excel files, processes it for the respective analysis (e.g., comparing cities, or analyzing policy effects), and generates visualizations, which are saved to a specified output location.
 
-**Functions Used:**
+**Key Functions:**
 
 `plot_price_distribution`: Generates a histogram showing one-day Airbnb price distribution.<br>
 `plot_city_comparison_boxplot`: Creates a boxplot comparing one-day prices across selected cities.<br>
@@ -151,7 +151,7 @@ This part generates a variety of visualizations for analyzing Airbnb prices base
 `plot_free_parking_barplots`: Compares average prices for listings with and without free parking for different lease durations.<br>
 '`output_path = "./artifacts/"`: This specifies that the generated visualizations (PNG files) will be saved in a folder named artifacts, which is also located in the current working directory.<br>
 
-##  Finding and Analysis ##
+##  Findings and Analysis ##
 **General Price Distribution**
 
 ![](./artifacts/price_distribution.png)
